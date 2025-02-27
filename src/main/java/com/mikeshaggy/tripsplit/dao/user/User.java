@@ -30,6 +30,5 @@ public class User extends BaseEntity<UUID> {
     }
 
     @ManyToMany(mappedBy = "participants")
-    @JsonIgnore
     Set<Trip> trips;
 }

@@ -31,6 +31,10 @@ public abstract class BaseService<T extends BaseEntity<ID>, ID, D extends BaseDT
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Entity with id %s not found", id)));
     }
 
+    public T getEntityById(ID id) {
+        return nativeMapper.toEntity(getById(id));
+    }
+
     public D create(D dto) {
         T entity = nativeMapper.toEntity(dto);
         T savedEntity = nativeRepository.save(entity);

@@ -52,4 +52,13 @@ public class TripController {
         tripService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/{tripId}/user/{userId}")
+    public ResponseEntity<TripDTO> addParticipantToTrip(
+            @PathVariable UUID tripId,
+            @PathVariable UUID userId) {
+        return new ResponseEntity<>(
+                tripService.addParticipantToTrip(tripId, userId),
+                HttpStatus.OK);
+    }
 }
